@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>通用积分商城</title>
+		<meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+		<link rel="stylesheet" href="../static/css/integralShop/completion.css" />
+        <script src="../static/js/integralShop/jquery-1.11.3.min.js"></script>
+		<script src="../static/js/integralShop/common.js"></script>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="logo"><p>通用积分商城</p></div>
+			<div class="container">
+                <div class="regist_inp">
+					<div class="div_col">
+						<div class="div_c_l"><span>账号</span></div>
+						<div class="div_c_r">
+							<input type="text" name="name" id="phone_number" placeholder="请输入手机号">
+						</div>
+					</div>
+					<div style="clear:both"></div>
+				</div>			
+				<div class="regist_inp">
+					<div class="div_col">
+						<div class="div_c_l"><span>密码</span></div>
+						<div class="div_c_r">
+							<input type="password" id="contact_address" value="" placeholder="请输入登录密码">
+						</div>
+					</div>
+					<div style="clear:both"></div>
+				</div>					
+			</div>
+			<button type="submit"  id="submit" class="btn_submit" disabled="disabled">登录</button>
+			<div class="layer" id="layer"></div>
+		</div>
+	</body>
+<script>
+	
+	//根据输入框状态改变登录按钮样式的方法
+	function submitStatus () {
+		var passWord = $('#contact_address').val()
+		var userName = $('#phone_number').val()	
+		if(passWord != '' && userName != ''){
+   			$('#submit').attr('disabled', false)
+   			$('#submit').css('background-color', '#108EE9')
+   		}else{
+   			$('#submit').attr('disabled', true)
+   			$('#submit').css('background-color', '#a0d2f7')
+   		}
+	}
+	//监听账号
+	$('#phone_number').bind('input propertychange',function () {
+		submitStatus()
+	})
+	//监听密码
+	$('#contact_address').bind('input propertychange',function () {
+		submitStatus()
+	})
+	//点击登录判断手机号是否注册
+   	$("#submit").click(function(){
+// 		console.log("222")
+   		$.ajax({
+	  		type:"post",
+           	url: urlheader + 'login.do', 
+		  	dataType: "json",
+		  	data:{
+		  		"timestamp":new Date().getTime(),
+		  		"action":"login",
+		  		"username":$('#phone_number').val(),
+		  		"password":$('#contact_address').val()
+		  		},
+		  	success: function(result){
+//		  		console.log(result)
+		  	     if(result.success == 200){
+                   window.location.href ="index.html?uniPayId="+result.result.uniPayId+"&token="+result.result.token+"&userType="+result.result.userType
+				 }else{
+				     $("#layer").text(result.message).show ().delay (1500).fadeOut ();
+		  		}
+			}
+	 	})  
+   })
+</script>
+	
+</html>

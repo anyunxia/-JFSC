@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>通用积分商城</title>
+		<meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+        <link rel="stylesheet" href="../static/css/integralShop/completion.css" />
+        <script src="../static/js/integralShop/jquery-1.11.3.min.js"></script>
+		<script src="../static/js/integralShop/common.js"></script>
+		<script type="text/javascript" src="../static/js/integralShop/countdown.js"></script>
+		<script type="text/javascript" src="../static/js/integralShop/clipboard.min.js"></script>
+		<script src="../static/js/integralShop/uits.js"></script>
+		
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="roof">
+				<span class="left" id="callBack"><img src="../static/images/integralShop/arrow_blue_icon@3x.png" alt="返回">返回</span>
+				<span class="center">购买详情</span>
+			</div>
+			<div class="section">
+				<div class="contain" style="padding-bottom: 1rem;">
+					<ul>
+						<li>
+							<span class="contain-left">订单状态</span>
+							<i class="contain-right" style="color:#1fb922;">等待支付</i>
+						</li>
+						<li>
+							<span>总金额</span>
+							<i>¥ <em class="ucMoney"></em></i>
+						</li>
+						<li>
+							<span>价格</span>
+							<i>¥ <em class="price"></em></i>
+						</li>
+						<li>
+							<span>数量</span>
+							<i class="num"></i>
+						</li>
+						<li>
+							<span>下单时间</span>
+							<i><b class="addTime"></b></i>
+						</li>
+						<li>
+							<span>订单号</span>
+							<i class="orderNo">1456764524576464</i>
+						</li>
+						
+					</ul>
+					<p>请支付<span>10</span>积分给以下账户</p>
+					<ul>
+						<li>
+							<span class="contain-left" style="color:#333;border-top:0;">银行转账</span>
+						</li>
+						<li>
+							<span class="contain-left" style="color:#9A9A9A;">收款人</span>
+							<i class="contain-right bankUser" style="color:#3a3a3a;" id="foo1"></i>
+							<i id="copy-button" data-clipboard-action="copy" data-clipboard-target="#foo1" class="copy-button"><img src="../static/images/integralShop/copy_icon.png" alt="" /></i>
+							
+						</li>
+						<li>
+							<span>银行卡信息</span>
+							<i id="foo2" class="bankName"></i>
+							<i id="copy-button" data-clipboard-action="copy" data-clipboard-target="#foo2" class="copy-button"><img src="../static/images/integralShop/copy_icon.png" alt="" /></i>
+						</li>
+						<li>
+							<span>开户支行</span>
+							<i id="foo3" class="bankAddress"></i>
+							<i id="copy-button" data-clipboard-action="copy" data-clipboard-target="#foo3" class="copy-button"><img src="../static/images/integralShop/copy_icon.png" alt="" /></i>
+						</li>
+						<li>
+							<span>银行卡号</span>
+							<i><em id="foo4" class="bankCardNo"></em></i>
+							<i id="copy-button" data-clipboard-action="copy" data-clipboard-target="#foo4" class="copy-button"><img src="../static/images/integralShop/copy_icon.png" alt="" /></i>
+						</li>
+						
+						<li class="payName">
+							<span><label>付款人姓名</label><input type="text" placeholder="请输入付款人姓名"/></span>
+							
+						</li>
+					</ul>
+					<div class="tips"><p>大于5万以上的汇款，请分批支付保证能及时到账，1小时未到账，卖家有权退回款项并取消订单</p></div>
+					<div class="countDown"><p>剩余确认时间<b id="minute_show" style="padding-left:.1rem;">00:</b><b id="second_show">00</b></p></div>
+					
+					<div class="affirm" ><button style="background-color: #a0d2f7;">我已支付</button></div>
+					<div class="layer">已复制</div>
+				</div>
+				
+			</div>
+			<div class="layerTip">
+				<div class="layer-con">
+					<div class="layer-top">
+						确认线下已付款
+					</div>
+					<div class="margin-bottom">
+						<ul class="ul_top" >
+							<li>
+								<span>总金额</span>
+								<i>¥ <span class="layerBankCardNo">10</span></i>
+						   </li>
+						</ul>
+					    <div class="textField">
+					    	<h2>亲爱的用户</h2>
+					    	<ul>
+					    		<li>1.如果您已经完成线下支付,请点击下方[已支付],卖家确认收款后会及时为您放币。</li>
+					    		<li>对于支付未完成，却点击[已支付]的用户将会降低用户权限，甚至冻结账户的使用权限，请您知晓。</li>
+					    	</ul>
+					    </div>
+					    <ul class="bot">
+					    	<li style="border-right: 1px solid #D9D9D9;" onclick="$('.layerTip').hide()" >取消</li>
+					    	<li>
+					    		<!--<a class="callUp" href="javascript:phone('+phone+')">联系对方</a> -->
+					    		<span class="confirmPutcoin" style="color: #108EE9;">已支付</span>
+					    	</li>
+					    </ul>
+					</div>
+				</div>
+		    </div>
+		</div>
+		<div class="layer" id="layer"></div>
+		
+	</body>
+	<script>
+		var intDiff = parseInt(120);
+		var uniPayId = GetRequest().uniPayId
+	    var token = GetRequest().token
+	    var userType = GetRequest().userType
+	    var orderId = GetRequest().orderId
+		if(token== undefined || uniPayId== undefined){
+			window.location.href = 'login.html'
+		}
+		$(document).ready(function(){
+			$.ajax({
+				type:"post",
+				url: urlheader + 'otcUserPayUcOrder.do', 
+				dataType: "json",
+				data:{
+					"timestamp":new Date().getTime(),
+					"action":"otcUserPayUcOrder",
+					"uniPayId":GetRequest().uniPayId,
+					"token":GetRequest().token,
+					"orderId":GetRequest().orderId
+				},	
+				success: function(result){
+//					console.log(result)
+					if(result.success == 200){
+//						window.location.href ="buyRecord.html?uniPayId="+uniPayId
+                         $('.bankUser').html(result.result.bankUser)
+                         $('.ucMoney').html(result.result.ucMoney)
+                         $('.price').html(result.result.price)
+                         $('.num').html(result.result.num)
+                         $('.addTime').html(result.result.addTime)
+                         $('.orderNo').html(result.result.orderNo)
+                         $('.bankUser').html(result.result.bankUser)
+                         $('.bankName').html(result.result.bankName)
+                         $('.bankAddress').html(result.result.bankAddress)
+                         $('.bankCardNo').html(result.result.bankCardNo)
+                         $('.layerBankCardNo').html(result.result.ucMoney)
+                      
+					}else if(result.success == 500){
+                        errLogin()
+					}else{
+				        $("#layer").text(result.message).show ().delay (2000).fadeOut ();
+		  		    }
+				}
+			})
+			// 点击外边已支付按钮
+			$(".affirm button").click(function(){
+				var inputVal = $('.payName input').val()
+				if(inputVal){
+					$(".layerTip").css("display","block")
+				}
+			})
+			// 点击弹窗已支付按钮
+			$('.confirmPutcoin').click(function(){
+				$.ajax({
+					type:"post",
+					url: urlheader + 'otcUserAlreadyPayUcOrder.do', 
+					dataType: "json",
+	                data:{
+				  		"timestamp":new Date().getTime(),
+		                "action":"otcUserPayUcOrder",
+				  		"uniPayId":GetRequest().uniPayId,
+				  		"orderId":GetRequest().orderId,
+				  		"realName":$('.payName input').val(),
+				  		"token":GetRequest().token
+					},
+					success: function(result){
+						if(result.success == 200){
+		                 window.location.href="buyJfDetail.html?uniPayId="+GetRequest().uniPayId+"&token="+GetRequest().token+"&orderId="+orderId
+					    }else if(result.success == 500){
+					    	errLogin()
+						}else{
+						     $("#layer").text(result.message).show ().delay (2000).fadeOut ();
+				  		}
+					}
+		        })
+		    })
+			
+			// 监听付款人输入框
+		    $('.payName input').bind('input propertychange',function () {
+				if($('.payName input').val()==''){
+					$('.affirm button').attr("disabled",true)
+					$('.affirm button').css("background-color","#a0d2f7")
+				}else{
+					$('.affirm button').attr("disabled",false) 
+					$('.affirm button').css("background-color","#108EE9")
+				}
+
+			 })
+           //  点击复制
+		    var clipboard = new Clipboard('#copy-button');
+		    $(".copy-button img").on('click',function(){
+		    	 $('.layer').show().delay(1000).hide(0);
+		    })
+		    $("#callBack").click(function(){
+                window.history.go(-1)
+		    })
+		})
+	</script>
+</html>

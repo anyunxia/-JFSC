@@ -1,0 +1,782 @@
+*{margin: 0; padding:0;}
+body,h1,h2,h3,h4,h5,h6,div,p,dl,dt,dd,ol,ul,li,form,table,th,td,a,img,span,strong,var,em,input,textarea,select,option{margin: 0; padding: 0;}
+html,body{width:100%;height:100%;font-family:Microsoft YaHei;Helvetica Neue For Number,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,PingFang SC,Hiragino Sans GB,Helvetica Neue,Helvetica,Arial,sans-serif; font-size: 14px; text-align: left;}
+ul,ol{list-style: none;}
+img{border: 0;}
+span{ user-select: none;}
+strong{font-weight: 100;}
+input, select, textarea {outline: 0 none; border:none;}
+textarea{resize:none;}
+input, select {line-height: 30px;font-size: 12px; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);}
+input, select:hover {color: #108ee9; background-color: #fff;}
+table{border-collapse: collapse; border-spacing: 0;}
+th,var,em{font-weight: normal; font-style: normal;}
+a{outline:none;text-decoration: none;}
+i{font-style: normal;}
+b{font-weight:normal;}
+a:hover,a:link,a:active,a:visited{outline:none;text-decoration: none;}
+html{font-size:50px;width:100%}
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    height:100%;
+}
+.wrapper .layer{
+	    left: 50%;
+    margin: -40px 0 0 -73px;
+    position: fixed;
+    top: 74%;
+    width: 146px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background: #eee;
+    border-radius: 22px;
+    z-index: 25;
+    display: block;
+    border:1px solid #E0E0E0;
+    opacity: rgba(0,0,0,.5);
+    display: none;
+}
+
+.wrapper .logo{
+    text-align: center;
+    padding-top: 2rem;
+    font-size:.48rem;
+    color:#108ee9;
+}
+.wrapper .container{
+    box-sizing: border-box;
+    margin-top:1.5rem;
+    padding:0 20px;
+}
+.wrapper .regist_inp {
+    border-bottom: 1px solid #d8d8d8;
+    background-color: #fff;
+    overflow: hidden;   
+}
+
+.wrapper .regist_inp .div_c_l {
+    float: left;   
+    font-size:16px;
+    font-weight: 500;
+    background:none;
+    width:22%;
+    text-indent:10px;
+    height: 57px;
+    line-height: 57px;
+}
+.wrapper .regist_inp .div_c_l span {
+    padding: 0 5px;
+    font-size:16px;
+}
+.wrapper .regist_inp .div_c_r {
+    float: right;
+    text-align:left;
+    width:78%;
+    background:none;
+    position: relative;
+}
+
+
+.wrapper .regist_inp .div_c_r input {
+    border: 0px;
+    margin-left:5px;
+    float: left;
+    height:16px;
+    outline: none;
+    text-align: left;
+    width:90%;
+    padding:20.5px 0;   
+    color:#888; 
+    font-size: 18px;
+}
+.wrapper .btn_submit{      
+    width: 80%;
+    height: 40px;
+    line-height:40px;
+    display:inline-block;
+    margin:0 auto;
+    text-align:center!important;       
+    background-color: #a0d2f7;
+    border-radius: 5px;
+    font-size: 17px;
+    color: #fff;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;   
+    margin-top:60px;
+    margin-bottom:0.7rem;
+    border: 0;
+}
+
+/*h5_index页面*/
+.wrapper .top{
+    height:4.36rem;
+    background:#108ee9;
+    box-sizing: border-box;
+     padding:0 .4rem;
+}
+.wrapper .top header{
+    font-size:.38rem;
+    color:#fff;
+    padding-top:.4rem;
+    text-align: center;
+    margin-bottom:.36rem;
+    
+}
+.wrapper .top .tab-menu{
+    width:100%;
+     height:.5rem;
+}
+.wrapper .top .tab-menu .date_button{
+    /*width:2rem;*/
+    height:.4rem;
+    color:#fff;
+    float:right;
+}
+.wrapper .top .tab-box div{
+    display:none;
+}
+#tab-box .pp{
+   text-align: center;
+   margin:40px 0;
+   font-size:.34rem;
+   color:#303030;
+}
+.wrapper .top .tab-box .tab-box-today{
+    display:block;
+}
+
+.wrapper .top .tab-menu ul .tab-menu-left{
+    float:left;
+    color:#deeffc;
+    font-size: .32rem;
+    height:.5rem;
+    line-height:.5rem;
+    
+}
+.wrapper .top .tab-menu .date_button img{
+   width:.48rem;
+  float:right;
+    
+}
+.wrapper .top .tab-box {
+    text-align: center;
+    margin-top:.24rem;
+}
+.wrapper .top .tab-box p{
+    color:#fff;
+    font-size:.64rem;
+}
+.wrapper .top .tab-box .sumo{
+    margin-bottom:.3rem;
+}
+.wrapper .top .tab-menu ul .change{
+    font-size: .36rem;
+    color:#fff;
+    } 
+.wrapper .top .tab-box .gross_amount ul{
+    display: flex;
+    justify-content: space-around;
+    color:#fff;
+}
+.wrapper .top .tab-box .gross_amount ul li span{
+   display: block;
+   margin-bottom:.1rem;
+}
+.wrapper .top .tab-box .gross_amount .gross_amount_top{
+    font-size:.32rem;
+    color:#deeffc;
+}
+.wrapper .top .tab-box .gross_amount .gross_amount_bottom{
+    font-size: .4rem;
+    color:#fff;
+}
+
+.wrapper .about_buy{
+    background:#fff;
+    margin-top:.2rem;
+    padding-left:.4rem;
+}
+.wrapper .about_buy .title{
+    height:1rem;
+    line-height:1rem;
+    border-bottom:1px solid #ccc;
+}
+.wrapper .about_buy .title ul{
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+}
+.wrapper .about_buy .title ul .buy_record{
+    padding-right:.4rem;
+    font-size: .32rem;
+    color:#108ee9;    
+}
+.wrapper .about_buy .title ul .buy_integral{
+    font-size:.34rem;
+    color:#3a3a3a;
+}
+
+.wrapper .about_buy .paymentmethod section{
+    box-sizing: border-box;
+    padding: .3rem .4rem .3rem 0;
+    background: #fff;
+}
+.wrapper .about_buy ..paymentmethod section .btcSpan{
+    font-size: .4rem;
+    color: #9a9a9a;
+    padding-left:.4rem;
+}
+.wrapper .about_buy .paymentmethod .lable{
+    color: #9A9A9A;
+    font-size:.36rem;
+    display: block;
+}
+.wrapper .about_buy .paymentmethod input{
+    height: 1.2rem;
+    width:64%;
+    color: #3A3A3A;
+    font-size:.8rem;
+    padding-top:.39rem;
+}
+.wrapper .about_buy .paymentmethod span img{
+    width:.31rem ;
+    float: right;
+    padding-top:.7rem;
+}
+.wrapper .about_buy .paymentmethod h3{
+    box-sizing: border-box;
+    font-weight: normal;
+    width:100%;
+    height:1.15rem;
+    line-height:1.15rem;
+    background: #fff;
+}
+.wrapper .about_buy .paymentmethod h3 p{
+    display: inline-block;
+    border-top:1px solid #d9d9d9;
+    width: 100%;
+}
+.wrapper .about_buy .paymentmethod h3 p .rental{
+    font-size:.34rem;
+    color: #3a3a3a;
+}
+.wrapper .about_buy .paymentmethod h3 p .num{
+    font-size:.34rem;
+    color: #3a3a3a;
+    padding-left:.5rem;
+}
+.wrapper .about_buy .paymentmethod h3 p .btcSpan{
+    font-size: .4rem;
+    color: #9a9a9a;
+    padding-left:.4rem;
+}
+.wrapper .about_buy .tab-box .sellCurrency{
+    display: none;
+}
+.wrapper .about_buy .tab-box .sellCurrency p{
+    padding-left:.3rem ;
+    height: .8rem;
+    line-height: .8rem;
+    color: #9A9A9A;
+    font-size: .28rem;
+    border-bottom: 1px solid #d9d9d9;
+    background: #fff;
+}
+.wrapper .about_buy .tab-box .sellCurrency p span{
+    color: #fe5229;
+}
+/*.change{
+    border-bottom: 2px solid #108ee9;
+    color:#008cec !important;
+    } */
+
+.wrapper .about_buy .tab-box .sellCurrency h3{
+    font-weight: 100;
+    width:88%;
+    height: 1.02rem;
+    line-height: 1.02rem;
+    text-align: center;
+    color: #fff;
+    font-size: .36rem;
+    background: #008cec;
+    border-radius: 4px;
+    margin: 0 auto;
+    margin-top: .7rem;  
+    font-weight: 500;
+}
+.wrapper .affirm h2{
+    font-weight: 100;
+    width:88%;
+    height: 1.02rem;
+    line-height: 1.02rem;
+    text-align: center;
+    color: #fff;
+    font-size: .36rem;
+    background: #008cec;
+    border-radius: 4px;
+    margin: 0 auto;
+    margin-top: .7rem;  
+    font-weight: 500;
+}
+
+/*buyList页面*/
+
+.wrapper .roof{
+    position: fixed;
+    left:0;
+    roof:0;
+    width:100%;
+    height:1rem;
+    text-align: center;
+    background:#FFFFFF;
+    line-height: 1rem;
+    border-bottom: 1px solid #d9d9d9;
+    z-index: 111;
+    line-height:1rem;
+}
+.wrapper .roof .left{
+    position: absolute;
+    left: 0.3rem;
+    color: #108EE9;
+    font-size: .32rem;
+}
+.wrapper .roof .left img{
+    width:0.22rem;
+    height:0.32rem;
+    margin-right:0.09rem;
+    margin-bottom:-0.05rem;
+}
+.wrapper .roof .center{
+    font-size:.36rem ;
+    color: #3A3A3A;
+}
+
+.wrapper .section{
+    height: 100%;
+    background: #eee;
+    margin-top: 1rem;
+}
+.wrapper .section .tab-box .sellcurr_record{spanKey   
+    padding-bottom: 1rem;
+    overflow: hidden;
+    display: block;  
+    background: #eee; 
+}
+.wrapper .section .tab-box .sellcurr_re .awaitPay{
+    color: #1fb922;
+}
+.wrapper .section .tab-box .sellcurr_record .sellcurr_record_await{
+    padding-top: .4rem;
+    min-height: 2.06rem;
+    background: #fff;
+    margin-top: .2rem;
+ 	border-top: 1px solid #D9D9D9;
+ 	border-bottom: 1px solid #D9D9D9;
+ 	min-height: 1.5rem;
+ 	display: block;  
+}
+.wrapper .section .tab-box .sellcurr_record .turnDown{
+    border-bottom:0 ;
+}
+.wrapper .section .tab-box .sellcurr_record .sellcurr_record_await .left{
+    padding-left: .4rem;
+    float: left;
+}
+.wrapper .section .tab-box .sellcurr_record .sellcurr_record_await .right .spanValue{
+    display: block;
+}
+.wrapper .section .tab-box .sellcurr_record .sellcurr_record_await .right{
+    padding-right: .4rem;
+    float: right;
+}
+
+.wrapper .section .tab-box .sellcurr_record .sellcurr_record_await ul li{
+    padding-bottom: .25rem;
+    font-size:.32rem;
+}
+.wrapper .section .tab-box .sellcurr_record .sellcurr_record_await ul li .spanKey{
+    color:#3a3a3a;
+    font-size:.32rem;
+}
+.wrapper .section .tab-box .sellcurr_record .sellcurr_record_await ul li .spanKey em{
+    color:#9a9a9a;
+}
+.wrapper .section .tab-box .sellcurr_record .sellcurr_record_await ul li .spanKey .date{
+    padding-left:.2rem;
+}
+.wrapper .section .tab-box .sellcurr_record .sellcurr_record_await .right ul{
+    text-align: right;
+}
+.wrapper .section .tab-box .sellcurr_record .sellcurr_record_await .right ul .price{
+    color:#9A9A9A;
+    font-size:.32rem;
+    
+}
+.wrapper .section .tab-box .sellcurr_record .sellcurr_record_await ul li .data{
+    color:#9A9A9A;
+    font-size:.32rem;
+    padding-left: .4rem;
+}
+.wrapper .section .tab-box .sellcurr_record .sellcurr_record_await ul li i{
+    color:#fe5229;
+    font-size:.32rem;
+    float: right;
+}
+
+.wrapper .section .tab-box .sellcurr_record .sellcurr_record_await ul li .spanValue{
+    color:#3A3A3A;
+    font-size:.32rem;
+    padding-top: .2rem;
+    padding-left: .22rem;
+}
+
+.wrapper .section .tab-box .sellcurr_record .sellcurr_record_await .right ul li .spanKey{
+    float: right;
+}
+.wrapper .section .tab-box .sellcurr_record .sellcurr_record_await .right ul li .spanValue{
+    padding-top: 1.2rem;
+}
+
+.wrapper .section .tab-box .sellcurr_record .sellcurr_record_await .awaitPay{
+    /*color:#fe5229;*/
+    font-size:.32rem;
+
+}
+.wrapper .section .tab-box .sellcurr_record .current{
+	box-sizing: border-box;
+	padding:.24rem .4rem .08rem .4rem;
+}
+.wrapper .section .tab-box .sellcurr_record .current p{
+	font-size:.32rem;
+}
+.wrapper .section .tab-box .sellcurr_record .current ul{
+	display: flex;
+	justify-content: space-between;
+}
+
+.wrapper .section .tab-box .sellcurr_record .current ul li{
+	color:#9A9A9A;
+	padding-top:.14rem;
+}
+.wrapper .section .tab-box .sellcurr_record .current ul li .num,.wrapper .section .tab-box .sellcurr_record .current ul li .money{
+	padding-left:.18rem;
+}
+
+/*h5_buyDetail页面*/
+.wrapper .section .contain{
+	background: #eee;
+}
+.wrapper .section .contain ul{
+	background: #fff;
+	   
+}
+.wrapper .section .contain ul .border{
+	
+border-top:10px solid #eee;
+}
+.wrapper .section .contain ul li{
+	box-sizing: border-box;
+	width: 100%;
+	padding-right: .4rem;
+	height: 1.02rem;
+	line-height: 1.02rem;
+	border-bottom: 1px solid #D9D9D9;
+	    padding-left: .3rem;
+}
+.wrapper .section .contain ul li span{
+	color:#9A9A9A ;
+	font-size: .34rem;
+	padding-left:.1rem;
+}
+.wrapper .section .contain ul li .fit_ip5{
+    font-size: .34rem;
+    color: #3A3A3A;
+    float: right;
+}
+.wrapper .section .contain ul li i{
+	float: right;
+	color: #3a3a3a;
+	font-size: .34rem;
+}
+
+.wrapper .section .contain ul li .contain-left{
+	color: #9A9A9A;
+	padding-left:.1rem;
+}
+.wrapper .section .contain ul li .contain-right{
+	float: right;
+	color: #108EE9;
+	font-size: .34rem;
+}
+.wrapper .section .contain ul li .copy-button img{
+	width:.3rem;
+	opacity: .4;
+}
+
+.wrapper .section .contain img{
+	width: .36rem;
+	margin-bottom: -.06rem;
+	padding-right: .21rem;
+}
+.wrapper .section .contain .contact{
+	height: 1.02rem;
+	line-height: 1.02rem;
+	text-align: center;
+	background: #fff;
+	margin-top: .2rem;
+	border-top: 1px solid #D9D9D9;
+	border-bottom: 1px solid #D9D9D9;
+}
+.wrapper .section .contain .contact em{
+	color: #108EE9;
+	font-size: .34rem;
+}
+.wrapper .section .contain p{
+	width: 100%;
+	color: #9a9a9a;
+	font-size: .3rem;
+	margin-top: .35rem;
+	text-align: center;
+}
+.wrapper .section .contain p b{
+	font-weight: 500;
+	color: red;
+	
+}
+.wrapper .section .contain .explain{
+	border-right: 1px solid #D9D9D9;
+	display:inline-block;
+	height: 100%;
+	width: 49%;
+	text-align: center;
+	
+}
+.wrapper .section .contain .proceed{
+	display:block;
+    width: 88%;
+    height: 1rem;
+    line-height: 1rem;
+    text-align: center;
+    border-radius: 4px;
+	background: #108EE9;
+	color: #fff;
+	font-size: .32rem;
+	margin: 0 auto;
+	margin-top: .4rem;
+}
+.wrapper .section .contain .proceed img{
+	width: .4rem;
+}
+.wrapper .section .contain .remind{
+	box-sizing: border-box;
+    width: 100%;
+    padding:0 .4rem;
+    text-align: left;
+	color: #9a9a9a;
+	font-size: .26rem;
+	line-height: .45rem;
+}
+.wrapper .section .contain p{
+	box-sizing: border-box;
+	text-align: left;
+	margin-bottom: .3rem;
+	padding-left:.4rem;
+}
+.wrapper .section .contain p span{
+	color:red;
+	padding:0 .1rem;
+}
+.wrapper .section .contain .payName span{
+	display: flex;
+	justify-content: space-between;
+}
+.wrapper .section .contain .payName span input{
+	width:3.5rem;
+	    height:.6rem;
+	    margin-top:.25rem;
+	   border: 0;
+    color: #333;
+    font-size: .32rem;
+}
+.wrapper .section .contain .tips{
+	text-align: center;
+}
+.wrapper .section .contain .tips p{
+	width:96%;
+	font-size:.3rem;
+	line-height:.46rem;
+}
+.wrapper .section .contain .countDown p{
+	width:4rem;
+	margin:0 auto;
+	padding-top:.5rem;
+}
+.wrapper .affirm{
+	text-align: center;
+}
+.wrapper .affirm button{
+    font-weight: 100;
+    width:88%;
+    height: 1.02rem;
+    line-height: 1.02rem;
+    text-align: center;
+    color: #fff;
+    font-size: .36rem;
+    background: #a0d2f7;
+    border-radius: 4px;
+    margin: 0 auto;
+    margin-top: .7rem;  
+    font-weight: 500;
+   border: none;
+   outline: none;
+    
+}
+
+/*彈層*/
+.wrapper .layerTip{
+    position: fixed;
+    left:0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.4);
+    display: none;
+    z-index: 99999;
+}
+.wrapper .layerTip .layer-con{
+    width: 90%;
+    position: fixed;
+    left: 27%; top: 2.5rem;
+    margin-left: -22%;
+    background: white;
+    border-radius: .26rem;
+}
+.wrapper .layerTip .layer-con .layer-top{
+	width:100%;
+	height:1.2rem;
+	line-height:1.2rem;	
+	text-align: center;
+	font-size: .34rem;
+	border-bottom: 1px solid #d9d9d9;
+	color:#9A9A9A;
+}
+.wrapper .layerTip .layer-con .layer-top a{
+	color: #9A9A9A;
+}
+.wrapper .layerTip .layer-con .margin-bottom{
+	width:100%;
+}
+.wrapper .layerTip .layer-con .margin-bottom .ul_top{
+	background: #fff;
+	
+}
+.wrapper .layerTip .layer-con .margin-bottom .ul_top li{
+	
+	padding-left:.4rem;
+	padding-right: .4rem;
+	height: 1.1rem;
+	line-height: 1.1rem;
+	border-bottom: 1px solid #D9D9D9;
+	font-size: .32rem;
+	color:#9A9A9A ;
+}
+.wrapper .layerTip .layer-con .margin-bottom .ul_top li i{
+	float: right;
+	
+}
+.wrapper .layerTip .layer-con .margin-bottom p{
+	padding: 0 .4rem;
+	color:#9A9A9A;
+	font-size: .28rem;
+}
+.wrapper .layerTip .layer-con .margin-bottom .bot li{
+	float:left;
+	width: 49%;
+	text-align: center;
+	color:#108EE9;
+	font-size: .32rem;
+	height:1.2rem;
+	line-height: 1.2rem;
+}
+.wrapper .layerTip .layer-con .margin-bottom .callUp{
+	color: #108EE9;
+}
+.wrapper .layerTip .layer-con .margin-bottom .textField{
+	line-height: .44rem;
+	padding-bottom: .5rem;
+	border-bottom: 1px solid #D9D9D9;
+	margin-top:.4rem;
+}
+.wrapper .layerTip .layer-con .margin-bottom .textField ul{
+	box-sizing: border-box;
+	padding:0 .37rem;
+}
+.wrapper .layerTip .layer-con .margin-bottom .textField ul li{
+	color:#9A9A9A;
+	font-size:.3rem;
+}
+.wrapper .layerTip .layer-con .margin-bottom .textField h2{
+	color:#9A9A9A;
+	font-size:.28rem;
+	font-weight:normal;
+	display: inline-block;
+	margin-left:.37rem ;
+}
+
+/*h5_paymentSuccess.html页面*/
+
+.wrapper .section .contactOther{
+	border-top:8px solid #eee;
+	padding-bottom:1rem;
+	text-align: center;
+}
+.wrapper .section .contactOther span a{
+	color:#108EE9 !important;
+}
+
+.wrapper .section .remainTime P{
+	text-align: center;
+}
+/*滚动字幕*/
+.wrapper .newsAdvisory{
+	display: flex;
+	box-sizing: border-box;
+	padding:.27rem .68rem .27rem .38rem;
+	background:#fff;
+	border-top: 10px solid #eee;
+}
+.wrapper .newsAdvisory .list{
+	padding-left: .38rem;
+	font-size:13px;
+	color:#3a3a3a;
+	/*width: 500px;*/
+	height: 40px;
+	overflow: hidden;
+}
+.wrapper .newsAdvisory .list{
+	padding-left: .38rem;
+	height: 48px;
+	overflow: hidden;
+	
+}
+.wrapper .newsAdvisory .list li{
+	height:24px;text-indent:15px; font-size:12px; line-height:24px;list-style:none
+}
+.wrapper .newsAdvisory .list li a{
+	color:#3a3a3a;
+	display: block;
+}
+.wrapper .newsAdvisory .list .jfOrder,.wrapper .newsAdvisory .list .frjf{
+	color:#fd5129;
+	padding:0 .1rem;
+	
+}
+
+
+
+
+

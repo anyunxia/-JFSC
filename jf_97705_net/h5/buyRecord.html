@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>通用积分商城</title>
+		<meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+        <link rel="stylesheet" href="../static/css/integralShop/completion.css" />
+        <script src="../static/js/integralShop/jquery-1.11.3.min.js"></script>
+		<script src="../static/js/integralShop/common.js"></script>
+		<script src="../static/js/integralShop/uits.js"></script>
+		
+	</head>
+	<body>
+		<body>
+		<div class="wrapper">
+			<div class="roof">
+				<span class="left" id="callBack"><img src="../static/images/integralShop/arrow_blue_icon@3x.png" alt="返回">返回</span>
+				<span class="center">购买记录</span>
+			</div>
+			<div class="section" style="margin-top:1rem;">
+				<div class="tab-box">
+				    <div class="sellcurr_record sellcurr_re" id="tab-box"></div>
+				</div>
+			</div>
+		</div>
+		<div class="layer" id="layer"></div>
+	</body>
+	<script>
+	var uniPayId = GetRequest().uniPayId
+	var token = GetRequest().token
+	if(token== undefined || uniPayId== undefined){
+		window.location.href = 'login.html'
+	}
+	$(".sellcurr_record_await").click(function(){
+     	window.location.href="detail.html"
+	})
+	
+	// 获取订单记录AJAX
+	function getOrerList (data) {
+		$.ajax({
+			type:"post",
+			url: urlheader + 'getOtcUserBuyUcList.do', 
+			dataType: "json",
+			data:{
+				"timestamp":new Date().getTime(),
+				"action":"getOtcUserBuyUcList",
+				"uniPayId": GetRequest().uniPayId,
+				"token": GetRequest().token
+			},
+			success: function(result){
+//				console.log(result)
+				if(result.success == 200){
+					if(result.result.length==0){
+                       	$('#tab-box').html("<p class='pp'>暂无数据</p>")
+                    }else{
+                    	
+                   	    var current = `
+		                    <div class="current">
+		                         <p>`+result.result[0].monthTime+`</p>
+		                         <ul>
+		                            <li><span>购买成功订单</span><span class="num">`+result.result[0].orderCount+`</span></li>
+		                            <li><span>购买成功金额</span><span class="money"><em style="padding-right:.1rem;">¥</em>`+result.result[0].countMoney+`</span></li>
+		                        </ul>
+		                    </div>`
+		                    $('#tab-box').append(current)
+							for(var i=0; i<result.result.length; i++){
+								    var orderStepStatus = result.result[i].step
+//			                  	console.log(orderStepStatus)
+									var orderStepText = ''
+									var color = ""
+									if(orderStepStatus == 1){
+										orderStepText ="待支付"
+										color ="#1fb922"
+										
+									}else if(orderStepStatus == 81){
+										orderStepText ="新建订单"
+										color ="#1fb922"
+										
+									}else if(orderStepStatus == 88){
+										orderStepText ="交易完成"
+										color ="#1fb922"
+										
+									}else if(orderStepStatus == 80){
+										orderStepText ="已取消";
+										color ="#fe5229"
+									}else{
+										orderStepText ="交易中";
+										color ="#1fb922"
+									}
+									
+		                        var sellcurr = `<div class="sellcurr_record_await" orderId=`+result.result[i].orderId+`>
+		                            <section class="left" >
+		                              <ul>
+		                                 <li><span class="spanKey">买入积分<em style="margin-left:.1rem;">`+result.result[i].addtime+`</em></span></li>
+		                                 <li><span class="spanKey">数量</span><span class="spanValue">`+result.result[i].count+`</span></li>
+		                              </ul>
+		                            </section>
+		                            <section class="right" >
+		                              <ul>
+		                                  <li class="awaitPay" id="waitfor" style="color:`+color+`">`+orderStepText+`</li>
+		                                  <li>¥ <span>`+result.result[i].ucmoney+`</span></li>
+		                              </ul>
+		                            </section>
+		                        </div>`
+		                        $('#tab-box').append(sellcurr)
+		
+							   
+		                    }
+               
+	                        $(".sellcurr_record_await").click(function(){
+								window.location.href="buyJfDetail.html?orderId="+$(this).attr("orderId")+"&uniPayId="+GetRequest().uniPayId+"&token="+GetRequest().token
+							})
+                       
+                    }
+				}else if(result.success == 500){
+                    errLogin()
+				}else{
+				    $("#layer").text(result.message).show ().delay (2000).fadeOut ();
+		  		}
+			}
+		})
+	}
+	getOrerList()　
+	　
+	$("#callBack").click(function(){
+     	window.history.go(-1)
+	})
+	</script>
+</html>
+

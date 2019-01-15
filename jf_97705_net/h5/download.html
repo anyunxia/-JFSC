@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>通用积分商城APP下载</title>
+		<script src="../static/js/integralShop/jquery-1.11.3.min.js"></script>
+	</head>
+	<body>
+	</body>
+	<script>
+		function download(filepath) {
+            var url = "https://cn-open.otcpay.org:8443/unipaycenter/otc/downloadApp";
+			var form = $("<form></form>").attr("action", url).attr("method", "post");
+		    form.append($("<input></input>").attr("type", "hidden").attr("name", "filepath").attr("value", filepath));
+		    form.appendTo('body').submit().remove();
+		}
+		$(document).ready(function(){
+			download()
+		})
+	</script>
+</html>
